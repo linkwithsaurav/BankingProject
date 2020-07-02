@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+            <title>Bank Of India Transaction Page</title>
+    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+    <script src="jquery-3.4.1.min.js"></script>
+    <style>
+    body{
+        background-image: linear-gradient(rgba(189, 184, 184, 0.493),
+        rgba(167, 154, 154, 0.89)), url('transaction.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        font-family: 'Sofia';
+        font-size:large;
+        font-weight: 900;
+        /* color:rgb(99, 5, 187)     */
+    }
+
+    /* div #one1,#two2,#three3,#four4{
+        background-color: cadetblue;
+    } */
+    select{
+        width: 80px;
+        text-align: center;
+        border-radius: 8px;
+        padding: 10px;
+        background:transparent;
+    }
+    legend{
+        font-size: larger;
+        text-align: center;
+    }
+    fieldset{
+        border: 3px solid rgb(93, 94, 76);
+        border-radius: 10px;;
+    }
+    table,tr,td{
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+        display: none;
+        color:black;
+    }
+    #title{
+        padding-left: 500px;
+    }
+        
+    #one1,#two2,#three3,#four4{
+        display:none;
+    }
+    td{
+        /* display: none; */
+        width: 250px;
+        height: 25px;
+    }
+    #type{
+        margin-left: 150px;
+    }
+    #amt{
+        margin-left: 250px;
+        padding-bottom: 10px;;
+    }
+    #lw{
+        margin-left: 300px;
+    }
+    .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidenav a:hover {
+        color: #f1f1f1;
+    }
+
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+    #main {
+        transition: margin-left .5s;
+        padding: 16px;
+    }
+
+    @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+    }
+    </style>
+</head>
+<body>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#" id="CD">Customer Details</a>
+        <a href="#" id="TD">Transaction Details</a>
+        <a href="#" id="TT">Transaction Type</a>
+        <a href="#" id="MS">Mini-Statement</a>
+        <a href="#" id="LO">Log-Out</a>
+    </div>
+    <div id="main">
+
+        <div style="background-color: yellowgreen;border-radius: 10px;">
+                <span id="open" style="font-size:30px;color:black;cursor:pointer;" onclick="openNav()">&#9776;</span>
+                <span id="title" style="background-color: yellowgreen;font-size:xx-large;color: black;text-align:center;border-radius: 5px;">Bank Of India</span>
+            </div>
+            <br>
+
+    <div id="one1">
+        <fieldset >
+            <legend><b>Customer Details</b></legend>
+            <center><b>CRN</b> : <span>9081726354</span><br></center>
+        <div>
+            <span><b>Customer Name :</b> Saurav Singh</span><br>
+            <span><b>Account Number :</b> 1000654987321</span>
+        </div>
+        </fieldset>
+    </div>
+    <div id="two2">
+        <fieldset >
+            <legend><b>Transaction Details</b></legend>
+            <center><b>Account Balance :</b> <span id="AB"></span><br>
+           <span>Last Deposit :<span  id="LD"> </span></span>
+           <span id="lw">Last Withdrawn :<span id="LW"> </span></span></center>
+        </fieldset>
+    </div>
+    <div id="three3">
+        <fieldset >
+            <legend><b>Transaction</b></legend>
+            Transaction Type : 
+            <select name="transact" id="transact">
+                <option value="none" id="none"><b>None</b></option>
+                <option value="Deposit" id="Deposit"><b>Deposit</b></option>
+                <option value="Withdraw" id="Withdraw"><b>Withdraw</b></option>
+            </select>
+            <span id="type">Mode Of Payment : </span>
+            <select name="type" id="type1">
+                <option value="none"><b>None</b></option>
+                <option value="Cash"><b>Cash</b></option>
+                <option value="Cheque"><b>Cheque</b></option>
+            </select>
+            <span id="amt">Amount : 
+                <input id="amt2" style="background:transparent; border-radius:4px;padding:10px;
+                border:0.5px solid rgb(177, 172, 172)" type="number"></span>
+            <hr>
+            <button id="btn" width="50px" style="border: none; padding: 10px;">Submit</button>
+        </fieldset>
+    </div>
+
+    <div id="four4">
+        <fieldset >
+            <legend><b>Mini-Statement</b></legend>
+            <center>
+                <div>
+                    <table id="divTable">
+                    </table>
+                </div>
+            </center>
+        </fieldset>
+        </div>
+            
+    </div>
+</body>
+<script src="Application.js"></script>
+<script>
+$(document).ready(function(){
+  
+    $('#CD').click(()=>{
+        $('#one1').toggle(1000);
+    })
+    $('#TD').click(()=>{
+        $('#two2').toggle(1000);
+    })
+    $('#TT').click(()=>{
+        $('#three3').toggle(1000);
+    })
+    $('#MS').click(()=>{
+        $('#four4').toggle(1000);
+    })
+    $('#LO').click(()=>{
+        window.location.replace("loginpage.html");
+    })
+    $('#transact').change(()=>{
+        console.log($('#transact').val());
+    })
+
+})
+
+    function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+    function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+}
+
+</script>
+
+</html>

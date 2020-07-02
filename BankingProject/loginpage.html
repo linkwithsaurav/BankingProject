@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+    <title>Bank Of India</title>
+    <style>
+    #login{
+        width: 350px;
+        height: 300px;
+        background-color: rgb(245, 245, 245);
+        font-weight: bold;
+        margin: 150px 300px 100px 200px;
+        padding: 10px 10px 10px 10px;
+        border-radius: 10px;
+        border: 5px solid yellowgreen;
+        opacity: .85;
+        box-shadow: 5px 5px #eeebeb;
+        color: rgb(133, 247, 3);
+        display: none;
+    }
+    body{
+        background-image: url('bankimages.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        font-family: 'Sofia';
+        font-size:large;
+    }
+    #loginbtn{
+        width:350px;
+        background-color: rgb(133, 247, 3);
+
+    }
+    button{
+        border: none;
+        font-style:inherit;
+        padding: 10px;        
+    }
+    #compartment{
+        /* background-color: wheat; */
+        padding: 5px;
+        border-radius: 5px;
+    }
+    #sp{
+        padding-left: 120px;
+    }
+    #cancel{
+        background: rgb(230, 28, 21);
+    }
+    input{
+        background:transparent;
+        border: none;
+        padding: 5px;
+    }
+
+
+    </style>
+        <script src="jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div id="back">
+        <h2 style="background-color: yellowgreen;text-align: center;border-radius: 4px;;">Bank Of India</h2>
+        <h3 style="background-color: yellowgreen; text-align: center; margin: 100px;border-radius: 5px;;">
+            Click to LOGIN!!!</h3>
+        <div id="login">
+            <center style="font-size:x-large;">Login Page</center><br>
+            UserName : <input type="text" id="uname" required placeholder="Enter UserName" required><br><br>
+            Password : <input type="password" id="pword" required placeholder="Enter password" required><br><br>
+            <button id="loginbtn" onclick="check()"><b>Login</b></button><br><br>
+            <div id="compartment">
+            <input id="cancel" type="reset" value="Cancel"style="padding: 10px;">
+            <span id="sp">forget <a href="###">password ?</a></span>
+            </div>
+        </div>
+    </div>
+    
+</body>
+<script>
+    $(document).ready(function(){
+        $('#back').click(()=>{
+            $(login).show(1000);
+            $('h3').hide();
+        })
+        $('#cancel').click(()=>{
+            $('#uname').val();
+        })
+    
+    })
+    function check(){
+        if($('#uname').val() === 'Saurav Singh' && $('#pword').val() === "Asns@2196"){
+            window.location.replace("Functionpage.html");
+        }else if($('#uname').val() !=="Saurav Singh"){
+            alert("Invalid UserName");
+            $('#uname').focus();
+            $('#uname').select();
+        }else if($('#pword').val() !=="Asns@2196"){
+            alert("Invalid Password");
+            $('#pword').focus();
+            $('#pword').select();
+        }else{
+            error("Both requisites are invalid ")
+            $('#uname').focus();
+            $('#uname').select();
+        }
+    }
+
+    function clear(){
+        document.getElementById("uname").value=""
+        document.getElementById("pword").value=""
+    }
+
+</script>
+</html>
